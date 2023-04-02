@@ -6,6 +6,7 @@
 -->
 <script>
 import AppMain from './components/AppMain.vue';
+import ProjectCard from './components/ProjectCard.vue';
 import { store } from './store';
 
 export default {
@@ -17,7 +18,8 @@ export default {
     },
     // 2. Registrazione
     components: {
-        AppMain
+        AppMain,
+        ProjectCard
     },
     methods: {
 
@@ -27,6 +29,7 @@ export default {
 
 <template>
     <AppMain />
+    <ProjectCard />
 </template>
 
 <style lang="scss">
