@@ -5,31 +5,28 @@
     3. Aggiungere la proprietà name nell'oggetto esportato che avrà come valore il nome del componente (opzionale, ma buona pratica)
 -->
 <script>
-import AppMain from './components/AppMain.vue';
-import { store } from './store';
+import axios from 'axios';
 
 export default {
-    name: "App",
+    name: "AppMain",
     data() {
         return {
-            store
-        }
+        };
     },
-    // 2. Registrazione
-    components: {
-        AppMain
-    },
-    methods: {
-
+    created() {
+        axios
+            .get('http://127.0.0.1:8000/api/projects')
+            .then(response => {
+                console.log(response.data)
+            })
     }
 };
 </script>
 
 <template>
-    <AppMain />
+    <main>
+        <h1>Vite - Boolfolio</h1>
+    </main>
 </template>
 
-<style lang="scss">
-// Qui possiamo anche importare dei file .scss (attenzione al percorso)
-@import './styles/main';
-</style>
+<style scoped></style>
