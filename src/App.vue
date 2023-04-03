@@ -5,7 +5,9 @@
     3. Aggiungere la proprietà name nell'oggetto esportato che avrà come valore il nome del componente (opzionale, ma buona pratica)
 -->
 <script>
-import AppMain from './components/AppMain.vue';
+import AppHeader from './components/AppHeader.vue';
+// import AppMain from './components/AppMain.vue';
+import AppFooter from './components/AppFooter.vue';
 import ProjectCard from './components/ProjectCard.vue';
 import { store } from './store';
 
@@ -18,7 +20,8 @@ export default {
     },
     // 2. Registrazione
     components: {
-        AppMain,
+        AppHeader,
+        AppFooter,
         ProjectCard
     },
     methods: {
@@ -28,8 +31,12 @@ export default {
 </script>
 
 <template>
-    <AppMain />
-    <ProjectCard />
+    <AppHeader />
+    <main class="min-vh-100 text-bg-secondary py-4">
+        <router-view></router-view>
+    </main>
+    <AppFooter />
+    <!-- <ProjectCard /> -->
 </template>
 
 <style lang="scss">

@@ -27,35 +27,33 @@ export default {
 </script>
 
 <template>
-    <div class="container">
+    <div class="container mx-auto">
+        <h1 class="text-center">Vite - Boolfolio</h1>
         <div class="row">
-            <div class="col-10 mx-auto">
-
-                <h1 class="text-center">Vite - Boolfolio</h1>
-                <div class="card-container">
-                    <div class="card p-3 my-3" v-for="project in projects">
-                        <div>
-                            <h2 style="display: inline-block;">{{ project.id }}: </h2>
-                            <h2 style="display: inline-block; margin-left: 10px;">{{ project.title }}</h2>
+            <div class="col">
+                <div class=" d-flex flex-wrap">
+                    <div class="card mx-5 mt-5" v-for="project in projects" style="width: 21rem;">
+                        <img id="cover" :src="project.full_img_path" alt="">
+                        <div class="card-body p-2">
+                            <h4 class="card-title d-inline">{{ project.id }} -</h4>
+                            <h4 class="d-inline ms-1">{{ project.title }}</h4>
+                            <hr class="my-2">
+                            <div>
+                                <h5 style="display: inline-block;">Tipo progetto:</h5>
+                                <span class="fs-5 ms-2">{{ project.type ? project.type.name : 'Nessun tipo selezionato'
+                                }}</span>
+                            </div>
+                            <ul class="mt-2" v-if="project.technologies.length > 0" style="padding-left:0;">
+                                <h5 style="display: inline-block; ">Tecnologie utilizzate:</h5>
+                                <li class="fs-6 ms-2" v-for="technology in project.technologies"
+                                    style="display: inline-block;">
+                                    <span class="badge text-bg-warning p-1">{{ technology.name }} </span>
+                                </li>
+                            </ul>
+                            <hr class="mt-3">
+                            <p class="card-text mt-3 fs-5 pb-2">{{ project.content }}</p>
+                            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
                         </div>
-                        <div>
-                            <h3 style="display: inline-block;">Tipo progetto:</h3>
-                            <span class="fs-4 ms-2">{{ project.type ? project.type.name : 'Nessun tipo selezionato'
-                            }}</span>
-                        </div>
-                        <ul v-if="project.technologies.length > 0" style="padding-left:0;">
-                            <h3 style="display: inline-block; ">Tecnologie utilizzate:</h3>
-                            <li class="fs-4 ms-2" v-for="technology in project.technologies"
-                                style="display: inline-block; margin-right:10px">
-                                | {{ technology.name }} |
-                            </li>
-                        </ul>
-                        <div>
-                            <img style="height: 200px;" :src="project.full_img_path" alt="">
-                        </div>
-                        <p class="fs-4 mt-2">
-                            {{ project.content }}
-                        </p>
                     </div>
                 </div>
             </div>
@@ -63,4 +61,9 @@ export default {
     </div>
 </template>
 
-<style scoped></style>
+<style scoped lang="scss">
+#cover {
+    min-height: 370px;
+    max-height: 370px;
+}
+</style>
