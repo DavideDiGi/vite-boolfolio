@@ -8,10 +8,12 @@
 import axios from 'axios';
 
 export default {
-    name: "AppMain",
+    name: "ProjectsIndex",
     data() {
         return {
-            projects: []
+            projects: [],
+            defaultImg: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cG9ydGZvbGlvfGVufDB8fDB8fA%3D%3D&w=1000&q=80'
+
         };
     },
     created() {
@@ -22,7 +24,18 @@ export default {
 
                 this.projects = response.data.projects;
             })
-    }
+    },
+    // computed: {
+    //     shortContent() {
+    //         let shortContent = this.project.content;
+
+    //         if (shortContent.length > 100) {
+    //             shortContent = shortContent.substr(0, 100) + '...';
+    //         }
+    //         return shortContent;
+    //     }
+
+    // }
 };
 </script>
 
@@ -33,7 +46,7 @@ export default {
             <div class="col">
                 <div class=" d-flex flex-wrap">
                     <div class="card mx-5 mt-5" v-for="project in projects" style="width: 21rem;">
-                        <img id="cover" :src="project.full_img_path" alt="">
+                        <img id="cover" :src="project.full_img_path ?? defaultImg" :alt="project.title">
                         <div class="card-body p-2">
                             <h4 class="card-title d-inline">{{ project.id }} -</h4>
                             <h4 class="d-inline ms-1">{{ project.title }}</h4>
@@ -53,6 +66,8 @@ export default {
                             <hr class="mt-3">
                             <p class="card-text mt-3 fs-5 pb-2">{{ project.content }}</p>
                             <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                            <router-link :to="{ name: 'projects-show', params: { slug: project.slug } }"
+                                class="btn btn-primary p-2">Mostra di più</router-link>
                         </div>
                     </div>
                 </div>

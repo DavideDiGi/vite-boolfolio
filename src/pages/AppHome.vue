@@ -10,8 +10,9 @@ export default {
 </script>
 
 <template>
-    <div>
-        Homepage hey
+    <div class="text-center">
+        <h2>Homepage</h2>
+        <h4>Welcome!</h4>
     </div>
 </template>
 

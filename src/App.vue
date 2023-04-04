@@ -8,7 +8,8 @@
 import AppHeader from './components/AppHeader.vue';
 // import AppMain from './components/AppMain.vue';
 import AppFooter from './components/AppFooter.vue';
-import ProjectCard from './components/ProjectCard.vue';
+import ProjectsIndex from './pages/ProjectsIndex.vue';
+import ProjectsShow from './pages/ProjectsShow.vue';
 import { store } from './store';
 
 export default {
@@ -22,7 +23,8 @@ export default {
     components: {
         AppHeader,
         AppFooter,
-        ProjectCard
+        ProjectsIndex,
+        ProjectsShow
     },
     methods: {
 
@@ -36,7 +38,7 @@ export default {
         <router-view></router-view>
     </main>
     <AppFooter />
-    <!-- <ProjectCard /> -->
+    <!-- <ProjectsIndex /> -->
 </template>
 
 <style lang="scss">

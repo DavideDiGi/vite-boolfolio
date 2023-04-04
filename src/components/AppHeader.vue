@@ -9,7 +9,7 @@ export default {
                     label: 'Home'
                 },
                 {
-                    routeName: 'portfolio',
+                    routeName: 'projects-index',
                     label: 'Portfolio'
                 },
             ]
